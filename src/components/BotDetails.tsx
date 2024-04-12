@@ -68,9 +68,9 @@ export default function BotDetails({bot} : BotDetailsProps) {
                 onRequestClose={() => setShowDeleteModal(false)}
                 contentLabel="Confirmar Eliminación"
                 className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center z-50"
-            >
-                <div className="bg-white w-1/2 p-8 rounded-lg shadow-lg">
-                    <h2 className="text-lg font-bold mb-4">¿Estás seguro de que quieres eliminar este bot?</h2>
+                >
+                <div className="bg-white w-full md:w-1/2 p-4 md:p-8 rounded-lg shadow-lg">
+                    <h2 className="text-lg md:text-xl font-bold mb-4">¿Estás seguro de que quieres eliminar este bot?</h2>
                     <div className="flex justify-center">
                         <button className="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded-lg mr-2" onClick={() => setShowDeleteModal(false)}>Cancelar</button>
                         <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg" onClick={handleDeleteConfirmation}>Eliminar</button>
