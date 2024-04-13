@@ -39,6 +39,24 @@ export default function BotDetails({bot} : BotDetailsProps) {
                 { formatCurrency(bot.price) }
             </td>
             <td className="p-3 text-lg text-gray-800">
+                {bot.description}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
+                {bot.basePersonality}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
+                {bot.formality}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
+                {bot.enthusiasm}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
+                {bot.humor}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
+                {bot.useCaseTemplate}
+            </td>
+            <td className="p-3 text-lg text-gray-800">
                 <fetcher.Form method='POST'>
                     <button
                         type='submit'
