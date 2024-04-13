@@ -3,10 +3,10 @@ import { Outlet } from 'react-router-dom';
 export default function Layout() {
   return (
     <>
-      <header className='bg-slate-800'>
+      <header className='bg-stone-800'>
         <div className='mx-auto max-w-6xl py-4 px-6 lg:px-10 xl:px-16'>
           <h1 className='text-2xl lg:text-4xl font-extrabold text-white'>
-            Administrador de Bots
+            BotMinistrator
           </h1>
         </div>
       </header>

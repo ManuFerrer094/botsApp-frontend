@@ -11,7 +11,7 @@ export default function BotForm({ bot }: BotFormProps) {
                 <label
                     className="text-gray-800 md:w-1/4"
                     htmlFor="name"
-                >Nombre Bot:</label>
+                >Nombre:</label>
                 <input
                     id="name"
                     type="text"
@@ -56,12 +56,12 @@ export default function BotForm({ bot }: BotFormProps) {
                 <label
                     className="text-gray-800 md:w-1/4"
                     htmlFor="basePersonality"
-                >Personalidad Base:</label>
+                >Personalidad:</label>
                 <input
                     id="basePersonality"
                     type="text"
                     className="mt-2 md:mt-0 block w-full md:w-3/4 p-3 bg-gray-50"
-                    placeholder="Personalidad Base del Bot"
+                    placeholder="Personalidad del Bot"
                     name="basePersonality"
                     defaultValue={bot?.basePersonality}
                 />
@@ -116,12 +116,12 @@ export default function BotForm({ bot }: BotFormProps) {
                 <label
                     className="text-gray-800 md:w-1/4"
                     htmlFor="useCaseTemplate"
-                >Template de Caso de Uso:</label>
+                >Usos:</label>
                 <input
                     id="useCaseTemplate"
                     type="text"
                     className="mt-2 md:mt-0 block w-full md:w-3/4 p-3 bg-gray-50"
-                    placeholder="Template de Caso de Uso del Bot"
+                    placeholder="Usos"
                     name="useCaseTemplate"
                     defaultValue={bot?.useCaseTemplate}
                 />

@@ -1,54 +1,55 @@
-import { Link, Form, useActionData, ActionFunctionArgs, redirect, LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
-import ErrorMessage from '../components/ErrorMessage'
-import { getBotById, updateBot } from '../services/BotService'
-import { Bot } from '../types'
-import BotForm from '../components/BotForm'
+import { Link, Form, useActionData, ActionFunctionArgs, redirect, LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css'; // Importa el CSS de toast
+import ErrorMessage from '../components/ErrorMessage';
+import { getBotById, updateBot } from '../services/BotService';
+import { Bot } from '../types';
+import BotForm from '../components/BotForm';
+import { FiArrowLeft, FiSave } from 'react-icons/fi'; // Importa el icono de guardar
 
 export async function loader({params} : LoaderFunctionArgs) {
     if(params.id !== undefined) {
-        const bot = await getBotById(+params.id)
+        const bot = await getBotById(+params.id);
         if(!bot) {
-            return redirect('/')
+            return redirect('/');
         }
-        return bot
+        return bot;
     }
 }
 
 export async function action({request, params} : ActionFunctionArgs) {
-    const data = Object.fromEntries(await request.formData())
-    let error = ''
+    const data = Object.fromEntries(await request.formData());
+    let error = '';
     if(Object.values(data).includes('')) {
-        error = 'Todos los campos son obligatorios'
+        error = 'Todos los campos son obligatorios';
     }
     if(error.length) {
-        return error
+        return error;
     }
 
     if(params.id !== undefined) {
-        await updateBot(data, +params.id)
-        return redirect('/')
+        await updateBot(data, +params.id);
+        return redirect('/');
     }
-
 }
 
 const availabilityOptions = [
     { name: 'Activo', value: true},
     { name: 'Inactivo', value: false}
-]
+];
 
 export default function EditBot() {
-    const bot = useLoaderData() as Bot
-    const error = useActionData() as string
+    const bot = useLoaderData() as Bot;
+    const error = useActionData() as string;
 
     return (
         <>
             <div className='flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6'>
-                <h2 className='text-2xl md:text-4xl font-black text-slate-500 mb-4 md:mb-0'>Editar Bot</h2>
+                <h2 className='text-2xl md:text-4xl font-black text-stone-500 mb-4 md:mb-0'>Editar Bot</h2>
                 <Link
                     to="/"
-                    className='rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500 mt-4 md:mt-0 md:ml-4'
+                    className='bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center'
                 >
-                    Volver a Bots
+                    <FiArrowLeft className="text-xl" />
                 </Link>
             </div>
 
@@ -80,13 +81,13 @@ export default function EditBot() {
                     </select>
                 </div>
 
-                <input
+                <button
                     type="submit"
-                    className="mt-4 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
-                    value="Guardar Cambios"
-                />
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
+                >
+                    <FiSave className="text-xl" /> {/* Agrega el icono de guardar */}
+                </button>
             </Form>
-        
         </>
-    )
+    );
 }

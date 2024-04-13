@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 
 const AddChatBot: React.FC = () => {
@@ -43,145 +44,17 @@ const AddChatBot: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6">
-        <h2 className="text-2xl md:text-4xl font-black text-slate-500 mb-4 md:mb-0">Agregar Bot</h2>
-        <Link
-          to="/chatbots"
-          className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-500 mt-4 md:mt-0 md:ml-4"
-        >
-          Volver a Bots
-        </Link>
-      </div>
-
+    <div className="flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6">
+      <h2 className="text-2xl md:text-4xl font-black text-stone-500 mb-4 md:mb-0">Agregar Bot</h2>
+      <Link
+        to="/chatbots"
+        className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
+      >
+        <FiArrowLeft className="text-xl" />
+      </Link>
       <form className="mt-4 md:mt-10" onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="name">
-            Nombre:
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="description">
-            Descripción:
-          </label>
-          <input
-            type="text"
-            id="description"
-            name="description"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="basePersonality">
-            Personalidad base:
-          </label>
-          <input
-            type="text"
-            id="basePersonality"
-            name="basePersonality"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.basePersonality}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="formality">
-            Formalidad:
-          </label>
-          <input
-            type="text"
-            id="formality"
-            name="formality"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.formality}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="enthusiasm">
-            Entusiasmo:
-          </label>
-          <input
-            type="text"
-            id="enthusiasm"
-            name="enthusiasm"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.enthusiasm}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="humor">
-            Humor:
-          </label>
-          <input
-            type="text"
-            id="humor"
-            name="humor"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.humor}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="useCaseTemplate">
-            Template de caso de uso:
-          </label>
-          <input
-            type="text"
-            id="useCaseTemplate"
-            name="useCaseTemplate"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.useCaseTemplate}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="text-gray-800" htmlFor="status">
-            Estado:
-          </label>
-          <input
-            type="text"
-            id="status"
-            name="status"
-            className="mt-2 block w-full p-3 bg-gray-50"
-            value={formData.status}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <input
-          type="submit"
-          className="mt-4 w-full bg-indigo-600 p-2 text-white font-bold text-lg cursor-pointer rounded"
-          value="Agregar Bot"
-        />
       </form>
-    </>
+    </div>
   );
 };
 

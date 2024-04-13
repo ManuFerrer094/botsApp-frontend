@@ -1,12 +1,12 @@
-import { FiEdit, FiTrash, FiInfo, FiX, FiCheck } from 'react-icons/fi';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { FiEdit, FiTrash, FiInfo, FiCheck, FiX } from 'react-icons/fi'; // Importamos los iconos necesarios
 import { useNavigate, ActionFunctionArgs, useFetcher, redirect } from 'react-router-dom';
 import { Bot } from "../types";
 import { formatCurrency } from "../utils";
 import { deleteBot } from '../services/BotService';
 import ReactModal from 'react-modal';
 
-type BotDetailsProps = {
+type BotGridItemProps = {
     bot: Bot
 }
 
@@ -17,8 +17,7 @@ export async function action({params} : ActionFunctionArgs) {
     }
 }
 
-export default function BotDetails({bot} : BotDetailsProps) {
-
+const BotGridItem: React.FC<BotGridItemProps> = ({ bot }) => {
     const fetcher = useFetcher();
     const navigate = useNavigate();
     const isAvailable = bot.availability;
@@ -30,29 +29,20 @@ export default function BotDetails({bot} : BotDetailsProps) {
         navigate('/');
     };
 
-    const truncatedDescription = (description: string, maxLength: number) => {
-        if (description.length > maxLength) {
-            return description.slice(0, maxLength) + '...';
-        }
-        return description;
-    };
-
+    // Función para redirigir a la página de información sobre el bot
     const redirectToInfoPage = () => {
         navigate(`/bots/${bot.id}/info`);
     };
 
     return (
-        <tr className="border-b">
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.name}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{formatCurrency(bot.price)}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{truncatedDescription(bot.description, 20)}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.basePersonality}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.formality}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.enthusiasm}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.humor}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">{bot.useCaseTemplate}</td>
-            <td className="p-3 text-sm text-gray-800 text-center">
-                <fetcher.Form method='POST'>
+        <div className="border rounded-lg p-4 md:flex md:flex-col">
+            <div className="md:flex md:flex-col md:justify-between">
+                <h3 className="text-lg font-semibold">{bot.name}</h3>
+                <p className="text-gray-600">{formatCurrency(bot.price)}</p>
+                <p className="text-gray-600 md:mt-4">{bot.description}</p>
+            </div>
+            <div className="flex justify-between md:mt-4">
+                <fetcher.Form method='POST' className="w-full md:w-auto">
                     <button
                         type='submit'
                         name='id'
@@ -62,10 +52,8 @@ export default function BotDetails({bot} : BotDetailsProps) {
                         {isAvailable ? <FiCheck className="text-green-500 text-xl" /> : <FiX className="text-red-500 text-xl" />}
                     </button>
                 </fetcher.Form>
-            </td>
-            <td className="p-3 text-lg text-gray-800 text-center">
-            <div className="flex gap-2 md:mt-0">
-            <button
+                <div className="flex gap-2 md:mt-0">
+                <button
                     onClick={redirectToInfoPage}
                     className='bg-blue-600 hover:bg-blue-800 text-white rounded-full px-3 py-2 flex items-center justify-center'
                 ><FiInfo /></button>
@@ -78,7 +66,7 @@ export default function BotDetails({bot} : BotDetailsProps) {
                     className='bg-red-600 hover:bg-red-800 text-white rounded-full px-3 py-2 flex items-center justify-center'
                 ><FiTrash /></button>
                 </div>
-            </td>
+            </div>
             <ReactModal
                 isOpen={showDeleteModal}
                 onRequestClose={() => setShowDeleteModal(false)}
@@ -93,6 +81,8 @@ export default function BotDetails({bot} : BotDetailsProps) {
                     </div>
                 </div>
             </ReactModal>
-        </tr>
+        </div>
     );
-}
+};
+
+export default BotGridItem;
