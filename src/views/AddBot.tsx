@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const AddChatBot: React.FC = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     name: '',
     description: '',
     basePersonality: '',
@@ -19,7 +19,6 @@ const AddChatBot: React.FC = () => {
     e.preventDefault();
     const csvLine = `${formData.name},"${formData.description}",${formData.basePersonality},${formData.formality},${formData.enthusiasm},${formData.humor},${formData.useCaseTemplate},${formData.status}`;
     
-    // Agregar la nueva línea al archivo CSV
     try {
       const response = await fetch('/api/update-csv', {
         method: 'POST',
@@ -29,18 +28,13 @@ const AddChatBot: React.FC = () => {
         body: JSON.stringify({ csvLine }),
       });
       if (response.ok) {
-        navigate('/'); // Redirige a la lista de bots si la solicitud es exitosa
+        navigate('/');
       } else {
         throw new Error('Error al agregar el bot');
       }
     } catch (error) {
       console.error('Error:', error);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
   };
 
   return (

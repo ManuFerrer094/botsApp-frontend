@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ActionFunctionArgs, Link, useLoaderData } from 'react-router-dom';
 import { getBots, updateBotAvailability } from '../services/BotService';
 import BotDetails from '../components/BotDetails';
 import BotGridItem from '../components/BotGridItem';
 import { Bot } from '../types';
-import { FiPlus, FiList, FiGrid } from 'react-icons/fi'; // Importar iconos
+import { FiPlus, FiList, FiGrid } from 'react-icons/fi';
 
 export async function loader() {
   const bots = await getBots();
@@ -19,7 +19,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export default function Bots() {
   const data = useLoaderData() as Bot[];
-  const [view, setView] = useState<'list' | 'grid'>('grid'); // Cambiado de 'list' a 'grid'
+  const [view, setView] = useState<'list' | 'grid'>('grid');
 
   const toggleView = () => {
     setView(prevView => (prevView === 'list' ? 'grid' : 'list'));

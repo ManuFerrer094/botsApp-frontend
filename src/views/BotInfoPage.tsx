@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FiArrowLeft, FiEdit, FiTrash } from 'react-icons/fi';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Bot } from "../types";
@@ -36,12 +36,6 @@ const BotInfoPage = () => {
             await deleteBot(parseInt(id));
             setShowDeleteModal(false);
             navigate('/');
-        }
-    };
-
-    const redirectToEditPage = () => {
-        if (id) {
-            navigate(`/bots/${id}/editar`);
         }
     };
 
