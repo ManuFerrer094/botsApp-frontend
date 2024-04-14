@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { ActionFunctionArgs, Link, useLoaderData } from 'react-router-dom';
 import { getBots, updateBotAvailability } from '../services/BotService';
 import BotDetails from './BotDetails';
 import { Bot } from '../types';
 import { FiPlus, FiList, FiGrid } from 'react-icons/fi';
 import BotGridItem from './BotGridItem';
+import { Transition } from 'react-transition-group';
 
 export async function loader() {
   const bots = await getBots();
@@ -32,13 +33,20 @@ export default function Bots() {
         <div className="flex items-center flex-wrap">
           <Link
             to="bots/nuevo"
-            className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
+            className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center transition-colors duration-300"
           >
             <FiPlus className="text-xl" />
           </Link>
-          <button onClick={toggleView} className="bg-gray-300 hover:bg-gray-400 text-stone-800 font-bold rounded-full p-2 flex items-center">
-            {view === 'list' ? <FiGrid className="text-xl" /> : <FiList className="text-xl" />}
-          </button>
+          <Transition in={true} timeout={300}>
+            {(state) => (
+              <button
+                onClick={toggleView}
+                className={`bg-gray-300 hover:bg-gray-400 text-stone-800 font-bold rounded-full p-2 flex items-center transition-colors duration-300 ${state === 'entered' ? 'opacity-100' : 'opacity-0'}`}
+              >
+                {view === 'list' ? <FiGrid className="text-xl" /> : <FiList className="text-xl" />}
+              </button>
+            )}
+          </Transition>
         </div>
       </div>
       <div className="overflow-x-auto w-full">

@@ -35,7 +35,7 @@ const BotGridItem: React.FC<BotGridItemProps> = ({ bot }) => {
     };
 
     return (
-        <div className="border rounded-lg p-4 md:flex md:flex-col">
+        <div className="border rounded-lg p-4 md:flex md:flex-col card hover:shadow-md transition duration-300">
             <div className="md:flex md:flex-col md:justify-between">
                 <h3 className="text-lg font-semibold">{bot.name}</h3>
                 <p className="text-gray-600">{formatCurrency(bot.price)}</p>
@@ -52,11 +52,11 @@ const BotGridItem: React.FC<BotGridItemProps> = ({ bot }) => {
                         {isAvailable ? <FiCheck className="text-green-500 text-xl" /> : <FiX className="text-red-500 text-xl" />}
                     </button>
                 </fetcher.Form>
-            <ActionButtons
-                redirectToInfoPage={redirectToInfoPage}
-                editUrl={`/bots/${bot.id}/editar`}
-                handleDelete={() => setShowDeleteModal(true)}
-            />
+                <ActionButtons
+                    redirectToInfoPage={redirectToInfoPage}
+                    editUrl={`/bots/${bot.id}/editar`}
+                    handleDelete={() => setShowDeleteModal(true)}
+                />
             </div>
             <DeleteModal
                 isOpen={showDeleteModal}

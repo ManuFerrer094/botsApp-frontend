@@ -1,10 +1,9 @@
 import { Form, useActionData, ActionFunctionArgs, redirect, LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css'; // Importa el CSS de toast
 import ErrorMessage from '../components/ErrorMessage';
 import { getBotById, updateBot } from '../services/BotService';
 import { Bot } from '../types';
 import BotForm from '../components/BotForm';
-import { FiSave } from 'react-icons/fi'; // Importa el icono de guardar
+import { FiSave } from 'react-icons/fi';
 import BackButton from '../components/BackButton';
 
 export async function loader({params} : LoaderFunctionArgs) {
@@ -79,7 +78,7 @@ export default function EditBot() {
 
                 <button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center transition duration-300"
                 >
                     <FiSave className="text-xl" />
                 </button>

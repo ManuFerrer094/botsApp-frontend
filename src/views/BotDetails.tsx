@@ -43,7 +43,7 @@ export default function BotDetails({bot} : BotDetailsProps) {
     };
 
     return (
-        <tr className="border-b">
+        <tr className="border-b hover:shadow-md transition duration-300">
             <td className="p-3 text-sm text-gray-800 text-center">{bot.name}</td>
             <td className="p-3 text-sm text-gray-800 text-center">{formatCurrency(bot.price)}</td>
             <td className="p-3 text-sm text-gray-800 text-center">{truncatedDescription(bot.description, 20)}</td>
@@ -65,11 +65,11 @@ export default function BotDetails({bot} : BotDetailsProps) {
                 </fetcher.Form>
             </td>
             <td className="p-3 text-lg text-gray-800 text-center">
-            <ActionButtons
-                redirectToInfoPage={redirectToInfoPage}
-                editUrl={`/bots/${bot.id}/editar`}
-                handleDelete={() => setShowDeleteModal(true)}
-            />
+                <ActionButtons
+                    redirectToInfoPage={redirectToInfoPage}
+                    editUrl={`/bots/${bot.id}/editar`}
+                    handleDelete={() => setShowDeleteModal(true)}
+                />
             </td>
             <DeleteModal
                 isOpen={showDeleteModal}

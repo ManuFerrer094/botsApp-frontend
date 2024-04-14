@@ -6,7 +6,8 @@ import { formatCurrency } from "../utils";
 import { deleteBot, getBotById } from '../services/BotService';
 import { Spinner } from 'react-bootstrap';
 import DeleteModal from '../components/DeleteModal';
-import BackButton from '../components/BackButton'; // Importamos el componente BackButton
+import { Transition } from 'react-transition-group';
+import BackButton from '../components/BackButton';
 
 const BotInfoPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -47,24 +48,31 @@ const BotInfoPage = () => {
             <div className="md:flex md:flex-row md:justify-between mb-8">
                 <h2 className="text-3xl font-semibold text-stone-800 mb-4 md:mb-0">{bot.name}</h2>
                 <div className="flex md:mt-4">
-                <BackButton to="/" />
-                    <button
-                        onClick={() => navigate(`/bots/${bot.id}/editar`)}
-                        className="bg-purple-600 hover:bg-purple-800 text-white rounded-full px-3 py-2 flex items-center justify-center mr-4"
-                    >
-                        <FiEdit />
-                    </button>
-                    <button
-                        onClick={() => setShowDeleteModal(true)}
-                        className="bg-red-600 hover:bg-red-800 text-white rounded-full px-3 py-2 flex items-center justify-center"
-                    >
-                        <FiTrash />
-                    </button>
+                    <BackButton to="/" />
+                    <Transition in={true} timeout={300}>
+                        {(state) => (
+                            <button
+                                onClick={() => navigate(`/bots/${bot.id}/editar`)}
+                                className={`bg-purple-600 hover:bg-purple-800 text-white rounded-full px-3 py-2 flex items-center justify-center mr-4 transition-colors duration-300 ${state === 'entered' ? 'opacity-100' : 'opacity-0'}`}
+                            >
+                                <FiEdit />
+                            </button>
+                        )}
+                    </Transition>
+                    <Transition in={true} timeout={300}>
+                        {(state) => (
+                            <button
+                                onClick={() => setShowDeleteModal(true)}
+                                className={`bg-red-600 hover:bg-red-800 text-white rounded-full px-3 py-2 flex items-center justify-center transition-colors duration-300 ${state === 'entered' ? 'opacity-100' : 'opacity-0'}`}
+                            >
+                                <FiTrash />
+                            </button>
+                        )}
+                    </Transition>
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                    <p className="text-lg font-semibold text-stone-800 mb-4">Descripción</p>
                     <p className="text-gray-600">{bot.description}</p>
                 </div>
                 <div className="mb-8">

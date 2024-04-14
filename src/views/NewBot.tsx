@@ -36,7 +36,7 @@ export default function NewBot() {
                 <BotForm />
                 <button
                     type="submit"
-                    className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center transition duration-300"
                 >
                     <FiSave className="text-xl" />
                 </button>
