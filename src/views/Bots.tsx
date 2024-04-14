@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ActionFunctionArgs, Link, useLoaderData } from 'react-router-dom';
 import { getBots, updateBotAvailability } from '../services/BotService';
 import BotDetails from './BotDetails';
