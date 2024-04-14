@@ -9,7 +9,7 @@ export default function BotForm({ bot }: BotFormProps) {
         <>
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="name"
                 >Nombre:</label>
                 <input
@@ -24,7 +24,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="price"
                 >Precio:</label>
                 <input
@@ -39,7 +39,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="description"
                 >Descripción:</label>
                 <input
@@ -54,7 +54,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="basePersonality"
                 >Personalidad:</label>
                 <input
@@ -69,7 +69,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="formality"
                 >Formalidad:</label>
                 <input
@@ -84,7 +84,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="enthusiasm"
                 >Entusiasmo:</label>
                 <input
@@ -99,7 +99,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="humor"
                 >Humor:</label>
                 <input
@@ -114,7 +114,7 @@ export default function BotForm({ bot }: BotFormProps) {
 
             <div className="mb-4 md:flex md:items-center">
                 <label
-                    className="text-gray-800 md:w-1/4"
+                    className="text-stone-800 md:w-1/4"
                     htmlFor="useCaseTemplate"
                 >Usos:</label>
                 <input

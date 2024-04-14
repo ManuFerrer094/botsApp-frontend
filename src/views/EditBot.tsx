@@ -1,10 +1,11 @@
-import { Link, Form, useActionData, ActionFunctionArgs, redirect, LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
+import { Form, useActionData, ActionFunctionArgs, redirect, LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; // Importa el CSS de toast
 import ErrorMessage from '../components/ErrorMessage';
 import { getBotById, updateBot } from '../services/BotService';
 import { Bot } from '../types';
 import BotForm from '../components/BotForm';
-import { FiArrowLeft, FiSave } from 'react-icons/fi'; // Importa el icono de guardar
+import { FiSave } from 'react-icons/fi'; // Importa el icono de guardar
+import BackButton from '../components/BackButton';
 
 export async function loader({params} : LoaderFunctionArgs) {
     if(params.id !== undefined) {
@@ -45,12 +46,7 @@ export default function EditBot() {
         <>
             <div className='flex flex-col md:flex-row justify-between items-center mb-4 md:mb-6'>
                 <h2 className='text-2xl md:text-4xl font-black text-stone-500 mb-4 md:mb-0'>Editar Bot</h2>
-                <Link
-                    to="/"
-                    className='bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center'
-                >
-                    <FiArrowLeft className="text-xl" />
-                </Link>
+                <BackButton to="/" />
             </div>
 
             {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -66,7 +62,7 @@ export default function EditBot() {
 
                 <div className="mb-4">
                     <label
-                        className="text-gray-800"
+                        className="text-stone-800"
                         htmlFor="availability"
                     >Disponibilidad:</label>
                     <select 
@@ -85,7 +81,7 @@ export default function EditBot() {
                     type="submit"
                     className="bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-full p-2 mr-4 flex items-center"
                 >
-                    <FiSave className="text-xl" /> {/* Agrega el icono de guardar */}
+                    <FiSave className="text-xl" />
                 </button>
             </Form>
         </>

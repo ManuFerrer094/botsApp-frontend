@@ -3,7 +3,7 @@ import Layout from './layouts/Layout'
 import Bots, { loader as botsLoader, action as updateAvailabilityAction } from './views/Bots'
 import NewBot, { action as newBotAction } from './views/NewBot'
 import EditBot, { loader as editBotLoader, action as editBotAction } from './views/EditBot'
-import { action as deleteBotAction } from './components/BotDetails'
+import { action as deleteBotAction } from './views/BotDetails'
 import BotInfoPage from './views/BotInfoPage'
 
 export const router = createBrowserRouter([

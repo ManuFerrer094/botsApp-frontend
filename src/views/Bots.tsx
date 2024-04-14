@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { ActionFunctionArgs, Link, useLoaderData } from 'react-router-dom';
 import { getBots, updateBotAvailability } from '../services/BotService';
-import BotDetails from '../components/BotDetails';
-import BotGridItem from '../components/BotGridItem';
+import BotDetails from './BotDetails';
 import { Bot } from '../types';
 import { FiPlus, FiList, FiGrid } from 'react-icons/fi';
+import BotGridItem from './BotGridItem';
 
 export async function loader() {
   const bots = await getBots();
@@ -36,7 +36,7 @@ export default function Bots() {
           >
             <FiPlus className="text-xl" />
           </Link>
-          <button onClick={toggleView} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold rounded-full p-2 flex items-center">
+          <button onClick={toggleView} className="bg-gray-300 hover:bg-gray-400 text-stone-800 font-bold rounded-full p-2 flex items-center">
             {view === 'list' ? <FiGrid className="text-xl" /> : <FiList className="text-xl" />}
           </button>
         </div>
