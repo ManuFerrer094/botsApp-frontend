@@ -1,7 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import { FiGithub, FiLinkedin, FiGlobe } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiGlobe, FiLoader } from 'react-icons/fi';
+import { useState } from 'react';
 
 export default function Layout() {
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 5000);
+
   return (
     <>
       <header className='bg-stone-800'>
@@ -29,9 +36,15 @@ export default function Layout() {
         </nav>
       </header>
 
-      <main className='mt-4 md:mt-6 lg:mt-8 mx-auto max-w-6xl p-4 md:p-6 lg:p-8 bg-white shadow'>
-        <Outlet />
-      </main>
+      {loading ? (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+          <FiLoader className="text-white animate-spin text-6xl" />
+        </div>
+      ) : (
+        <main className='mt-4 md:mt-6 lg:mt-8 mx-auto max-w-6xl p-4 md:p-6 lg:p-8 bg-white shadow'>
+          <Outlet />
+        </main>
+      )}
     </>
   );
 }
